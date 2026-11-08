@@ -788,4 +788,14 @@
     <string name="st_web_engine_revert_confirm">Orijinal web motoru (Chromium 66) geri yüklensin mi? Güncel siteler web uygulaması kartında artık açılmaz.</string>
     <string name="st_web_engine_revert_ok">Geri yükle</string>
     <string name="st_web_engine_done">Tamam: web uygulaması kartı yeni motoru kullanıyor.</string>
+    <string name="dock_apps">Uygulamalar</string>
+    <string name="map_recenter">Haritayı ortala</string>
+    <string name="map_fullscreen">Tam ekran harita</string>
+    <string name="cd_previous">Önceki parça</string>
+    <string name="cd_play_pause">Oynat veya duraklat</string>
+    <string name="close">Kapat</string>
+    <string name="tesla_gear">Vites</string>
+    <string name="tesla_gear_unknown">Vites kullanılamıyor</string>
+    <string name="tesla_car_decorative">Dekoratif MG4 görseli</string>
+    <string name="st_style_tesla">Özel</string>
 </resources>

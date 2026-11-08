@@ -107,7 +107,7 @@ class SettingsActivity : AppCompatActivity() {
         // ════ Home tab: layout and map ════
         val style = panel(homeL, getString(R.string.st_style))
         text(style, getString(R.string.st_style_desc), 16f, R.color.text_title)
-        row(style, *styleButtons(listOf(R.string.st_style_full, R.string.st_style_simple, R.string.st_style_map), { prefs.homeStyle }) { prefs.homeStyle = it })
+        row(style, *styleButtons(listOf(R.string.st_style_full, R.string.st_style_simple, R.string.st_style_map, R.string.st_style_tesla), { prefs.homeStyle }) { prefs.homeStyle = it })
         // Menu bar: at the bottom, or vertical on the driver's side (read from the car), left or right (#75)
         dropdown(style, getString(R.string.st_bar), listOf(R.string.st_bar_bottom, R.string.st_bar_auto, R.string.st_bar_left, R.string.st_bar_right).map { getString(it) },
             { if (!prefs.verticalDock) 0 else 1 + prefs.barSide.coerceIn(0, 2) }) {
@@ -116,7 +116,7 @@ class SettingsActivity : AppCompatActivity() {
             app.mg4dash.ui.Themes.publish(this); recreate()
         }
         // Widgets' cards (#97): the same edit mode as a pinch on the home screen
-        if (prefs.homeStyle != 1) {
+        if (prefs.homeStyle != 1 && prefs.homeStyle != 3) {
             text(style, getString(R.string.st_edit_cards), 20f, R.color.text_value)
             text(style, getString(R.string.st_edit_cards_desc), 16f, R.color.text_title)
             row(style, button(getString(R.string.st_edit_cards_btn)) {

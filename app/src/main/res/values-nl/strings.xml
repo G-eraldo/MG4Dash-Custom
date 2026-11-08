@@ -788,4 +788,14 @@
     <string name="st_web_engine_revert_confirm">De originele web-engine (Chromium 66) terugzetten? Recente sites openen dan niet meer in de web-app-kaart.</string>
     <string name="st_web_engine_revert_ok">Terugzetten</string>
     <string name="st_web_engine_done">Klaar: de web-app-kaart gebruikt de nieuwe engine.</string>
+    <string name="dock_apps">Apps</string>
+    <string name="map_recenter">Kaart centreren</string>
+    <string name="map_fullscreen">Kaart volledig scherm</string>
+    <string name="cd_previous">Vorig nummer</string>
+    <string name="cd_play_pause">Afspelen of pauzeren</string>
+    <string name="close">Sluiten</string>
+    <string name="tesla_gear">Versnelling</string>
+    <string name="tesla_gear_unknown">Versnelling niet beschikbaar</string>
+    <string name="tesla_car_decorative">Decoratieve MG4-afbeelding</string>
+    <string name="st_style_tesla">Aangepast</string>
 </resources>

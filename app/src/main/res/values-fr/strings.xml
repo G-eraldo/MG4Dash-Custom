@@ -788,4 +788,14 @@
     <string name="st_web_engine_revert_confirm">Remettre le moteur web d\'origine (Chromium 66) ? Les sites récents ne s\'ouvriront plus dans la carte Web app.</string>
     <string name="st_web_engine_revert_ok">Remettre</string>
     <string name="st_web_engine_done">Terminé : la carte Web app utilise le nouveau moteur.</string>
+    <string name="dock_apps">Applications</string>
+    <string name="map_recenter">Recentrer la carte</string>
+    <string name="map_fullscreen">Carte plein écran</string>
+    <string name="cd_previous">Piste précédente</string>
+    <string name="cd_play_pause">Lecture ou pause</string>
+    <string name="close">Fermer</string>
+    <string name="tesla_gear">Rapport</string>
+    <string name="tesla_gear_unknown">Rapport indisponible</string>
+    <string name="tesla_car_decorative">Illustration décorative de la MG4</string>
+    <string name="st_style_tesla">Personnalisé</string>
 </resources>

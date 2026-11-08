@@ -788,4 +788,14 @@
     <string name="st_web_engine_revert_confirm">Tornare al motore web originale (Chromium 66)? I siti recenti non si apriranno più nella scheda Web app.</string>
     <string name="st_web_engine_revert_ok">Ripristina</string>
     <string name="st_web_engine_done">Fatto: la scheda Web app usa il nuovo motore.</string>
+    <string name="dock_apps">Applicazioni</string>
+    <string name="map_recenter">Ricentra mappa</string>
+    <string name="map_fullscreen">Mappa a schermo intero</string>
+    <string name="cd_previous">Brano precedente</string>
+    <string name="cd_play_pause">Riproduci o pausa</string>
+    <string name="close">Chiudi</string>
+    <string name="tesla_gear">Marcia</string>
+    <string name="tesla_gear_unknown">Marcia non disponibile</string>
+    <string name="tesla_car_decorative">Immagine decorativa della MG4</string>
+    <string name="st_style_tesla">Personalizzato</string>
 </resources>

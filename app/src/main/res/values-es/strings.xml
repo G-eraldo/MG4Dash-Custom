@@ -788,4 +788,14 @@
     <string name="st_web_engine_revert_confirm">¿Volver al motor web original (Chromium 66)? Los sitios recientes ya no se abrirán en la tarjeta Web app.</string>
     <string name="st_web_engine_revert_ok">Volver</string>
     <string name="st_web_engine_done">Hecho: la tarjeta Web app usa el nuevo motor.</string>
+    <string name="dock_apps">Aplicaciones</string>
+    <string name="map_recenter">Centrar mapa</string>
+    <string name="map_fullscreen">Mapa a pantalla completa</string>
+    <string name="cd_previous">Pista anterior</string>
+    <string name="cd_play_pause">Reproducir o pausar</string>
+    <string name="close">Cerrar</string>
+    <string name="tesla_gear">Marcha</string>
+    <string name="tesla_gear_unknown">Marcha no disponible</string>
+    <string name="tesla_car_decorative">Imagen decorativa del MG4</string>
+    <string name="st_style_tesla">Personalizado</string>
 </resources>

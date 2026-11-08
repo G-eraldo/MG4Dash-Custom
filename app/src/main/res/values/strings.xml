@@ -788,4 +788,14 @@
     <string name="st_web_engine_revert_confirm">Put back the car\'s own web engine (Chromium 66)? Recent sites will no longer open in the web app card.</string>
     <string name="st_web_engine_revert_ok">Put back</string>
     <string name="st_web_engine_done">Done: the web app card uses the new engine.</string>
+    <string name="dock_apps">Applications</string>
+    <string name="map_recenter">Recenter map</string>
+    <string name="map_fullscreen">Full-screen map</string>
+    <string name="cd_previous">Previous track</string>
+    <string name="cd_play_pause">Play or pause</string>
+    <string name="close">Close</string>
+    <string name="tesla_gear">Gear</string>
+    <string name="tesla_gear_unknown">Gear unavailable</string>
+    <string name="tesla_car_decorative">Decorative MG4 image</string>
+    <string name="st_style_tesla">Custom</string>
 </resources>

@@ -788,4 +788,14 @@
     <string name="st_web_engine_revert_confirm">Ursprüngliche Web-Engine (Chromium 66) zurückholen? Neuere Seiten öffnen sich dann nicht mehr in der Web-App-Karte.</string>
     <string name="st_web_engine_revert_ok">Zurück</string>
     <string name="st_web_engine_done">Fertig: Die Web-App-Karte nutzt die neue Engine.</string>
+    <string name="dock_apps">Apps</string>
+    <string name="map_recenter">Karte zentrieren</string>
+    <string name="map_fullscreen">Karte im Vollbild</string>
+    <string name="cd_previous">Vorheriger Titel</string>
+    <string name="cd_play_pause">Wiedergabe oder Pause</string>
+    <string name="close">Schließen</string>
+    <string name="tesla_gear">Gang</string>
+    <string name="tesla_gear_unknown">Gang nicht verfügbar</string>
+    <string name="tesla_car_decorative">Dekorative MG4-Abbildung</string>
+    <string name="st_style_tesla">Individuell</string>
 </resources>

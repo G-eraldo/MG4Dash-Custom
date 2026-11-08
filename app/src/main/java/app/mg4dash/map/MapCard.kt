@@ -22,7 +22,7 @@ import java.io.File
  * already in the dock). Follows the position as long as the user does not move it;
  * the "recentre" button resumes following.
  */
-class MapCard(private val context: Context, holder: ViewGroup) {
+class MapCard(private val context: Context, holder: ViewGroup, private val forceDark: Boolean = false) {
 
     private val map: MapView?
     private val marker: Marker?
@@ -115,7 +115,7 @@ class MapCard(private val context: Context, holder: ViewGroup) {
     }
 
     /** Map theme (#15): auto (the car's day / night, whatever the app's theme), light or dark. */
-    private fun darkMap(): Boolean = when (app.mg4dash.system.Prefs(context).mapTheme) {
+    private fun darkMap(): Boolean = if (forceDark) true else when (app.mg4dash.system.Prefs(context).mapTheme) {
         1 -> false
         2 -> true
         else -> app.mg4dash.ui.Themes.isNight(context)

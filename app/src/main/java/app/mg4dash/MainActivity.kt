@@ -16,6 +16,7 @@ import app.mg4dash.pages.VehicleActivity
 import app.mg4dash.ui.Fullscreen
 import app.mg4dash.ui.Dock
 import app.mg4dash.ui.SimpleHome
+import app.mg4dash.ui.TeslaHome
 import android.provider.Settings
 import android.util.TypedValue
 import android.view.Gravity
@@ -54,9 +55,11 @@ class MainActivity : AppCompatActivity(), app.mg4dash.ui.Tutorial.Places {
     private lateinit var prefs: Prefs
     private lateinit var mapCard: MapCard
     private var simpleMode = false
+    private var teslaMode = false
     private var mapLayout = false
     private var themeSig = 0
     private var simple: SimpleHome? = null
+    private var tesla: TeslaHome? = null
     private val handler = Handler(Looper.getMainLooper())
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -70,6 +73,18 @@ class MainActivity : AppCompatActivity(), app.mg4dash.ui.Tutorial.Places {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 CarBridge.state.collect { if (!builtHeating && CarBridge.heatingShown(this@MainActivity)) recreate() }
             }
+        }
+        if (prefs.homeStyle == 3) {
+            teslaMode = true
+            builtVertical = Dock.vertical(this)
+            builtHideTitles = prefs.hideTitles
+            builtHeating = CarBridge.heatingShown(this)
+            builtConnections = prefs.connectionIcons
+            builtCardPower = cardPower
+            tesla = TeslaHome(this).also { setContentView(it.root); it.start() }
+            warmUpStockLauncherIfNeeded()
+            if (savedInstanceState == null) app.mg4dash.sound.SoundTrigger.onBootOrAppStart(this)
+            return
         }
         if (prefs.homeStyle == 1) {
             // Simple home: same HOME activity, other content
@@ -302,7 +317,7 @@ class MainActivity : AppCompatActivity(), app.mg4dash.ui.Tutorial.Places {
      * step goes to their place if it has several cards, otherwise to another place with several (not the map's).
      */
     override fun tutorialView(id: Int): View? {
-        if (simpleMode) return null
+        if (simpleMode || teslaMode) return null
         fun place(f: SlotFrame?) = f?.box
         return when (id) {
             R.id.climateCard -> place(frames.values.firstOrNull { it.fill == HomeSlots.Fill.Climate })
@@ -637,8 +652,8 @@ class MainActivity : AppCompatActivity(), app.mg4dash.ui.Tutorial.Places {
         // MG4Dash had not started and the rescue app stepped in: say so once
         app.mg4dash.system.Rescue.notice?.let { app.mg4dash.system.Rescue.notice = null; app.mg4dash.ui.Toasts.show(this, it, long = true) }
         // Home layout changed in the settings: rebuild the screen
-        if ((prefs.homeStyle == 1) != simpleMode || (prefs.homeStyle == 2) != mapLayout || Dock.vertical(this) != builtVertical || prefs.hideTitles != builtHideTitles ||
-            CarBridge.heatingShown(this) != builtHeating || (!simpleMode && cardPower != builtCardPower) ||
+        if ((prefs.homeStyle == 1) != simpleMode || (prefs.homeStyle == 3) != teslaMode || (prefs.homeStyle == 2) != mapLayout || Dock.vertical(this) != builtVertical || prefs.hideTitles != builtHideTitles ||
+            CarBridge.heatingShown(this) != builtHeating || (!simpleMode && !teslaMode && cardPower != builtCardPower) ||
             prefs.connectionIcons != builtConnections ||
             app.mg4dash.ui.Themes.signature(this) != themeSig) { app.mg4dash.ui.Themes.recreateSmooth(this); return }
         // Map app uninstalled in the meantime (#54): back to the OpenStreetMap map
@@ -646,6 +661,7 @@ class MainActivity : AppCompatActivity(), app.mg4dash.ui.Tutorial.Places {
         app.mg4dash.ui.UpdatePrompt.maybeShow(this)
         app.mg4dash.ui.DataAlert.attach(this)
         if (simpleMode) { simple?.onResume(); Fullscreen.apply(this); return }
+        if (teslaMode) { tesla?.onResume(); Fullscreen.apply(this); return }
         mapCard.onResume()
         if (isShown(Card.WEB) || webDetached) webCard?.show()
         if (isShown(Card.SHORTCUTS)) renderShortcuts()
@@ -671,7 +687,7 @@ class MainActivity : AppCompatActivity(), app.mg4dash.ui.Tutorial.Places {
         CarBridge.setForeground(false)
         // (the map's full screen is no longer left here: the bar does it when opening a page, and
         // a rebuild (theme) or the map app taking over must not leave it)
-        if (!simpleMode) mapCard.onPause()
+        if (teslaMode) tesla?.onPause() else if (!simpleMode) mapCard.onPause()
         webCard?.pauseHome()
         handler.removeCallbacksAndMessages(null)
     }
@@ -687,9 +703,10 @@ class MainActivity : AppCompatActivity(), app.mg4dash.ui.Tutorial.Places {
     /** HOME pressed while already home: nothing is recreated, the map goes back to its widget size. */
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
+        if (teslaMode) { tesla?.exitMapFocus(); return }
         if (!simpleMode) setMapFullscreen(false)
-        if (intent?.getBooleanExtra(app.mg4dash.ui.Tutorial.EXTRA_SHOW, false) == true) b.root.post { app.mg4dash.ui.Tutorial.show(this) }
-        if (intent?.getBooleanExtra(app.mg4dash.ui.CardsEditor.EXTRA_EDIT, false) == true) b.root.post { editCards() }
+        if (!simpleMode && intent?.getBooleanExtra(app.mg4dash.ui.Tutorial.EXTRA_SHOW, false) == true) b.root.post { app.mg4dash.ui.Tutorial.show(this) }
+        if (!simpleMode && intent?.getBooleanExtra(app.mg4dash.ui.CardsEditor.EXTRA_EDIT, false) == true) b.root.post { editCards() }
     }
 
     @Deprecated("Accueil : retour sans effet")
@@ -1141,7 +1158,7 @@ class MainActivity : AppCompatActivity(), app.mg4dash.ui.Tutorial.Places {
     }
 
     /** Called by the bar: each of its buttons brings the map back to its widget size. */
-    fun exitMapFullscreen() = setMapFullscreen(false)
+    fun exitMapFullscreen() { if (teslaMode) tesla?.exitMapFocus() else if (!simpleMode) setMapFullscreen(false) }
 
     /**
      * Full screen map (issue #4): the other widgets disappear, the bar (vertical or bottom)

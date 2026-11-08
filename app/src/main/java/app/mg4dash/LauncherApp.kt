@@ -40,18 +40,23 @@ class LauncherApp : Application() {
         // Consumption map removed (1/11): file and accelerometer settings deleted
         java.io.File(filesDir, "consumption_map.json").takeIf { it.exists() }?.let { it.delete(); Log.i("App", "old consumption map deleted") }
         java.io.File(applicationInfo.dataDir, "shared_prefs/accel_cal.xml").takeIf { it.exists() }?.delete()
-        // First install: Full layout, full screen and vertical bar on the left by default.
+        // First install: the custom visual home, full screen, black and red.
         // Existing installs keep their settings (the preferences file is not empty).
         if (!BuildConfig.MOCK) {
             val sp = app.mg4dash.system.Prefs(this).raw
             if (!sp.contains("defaults_v1")) {
                 val fresh = sp.all.isEmpty()
                 sp.edit().apply {
-                    if (fresh) putInt("home_style", 0).putBoolean("fullscreen", true).putBoolean("vertical_dock", true)
-                        .putBoolean("tutorial_pending", true)   // gesture tutorial on the first home screen
+                    if (fresh) putInt("home_style", 3).putBoolean("fullscreen", true).putBoolean("vertical_dock", false)
+                        .putBoolean("tutorial_pending", false)
                     putBoolean("defaults_v1", true)
                 }.apply()
-                if (fresh) Log.i("App", "first install: Full layout, full screen, vertical bar")
+                if (fresh) Log.i("App", "first install: custom home, full screen")
+            }
+            // Existing MG4Dash installations keep their other preferences and services.
+            if (!sp.contains("custom_theme_v1")) {
+                sp.edit().putInt("home_style", 3).putInt("theme_mode", 1).putInt("theme_accent", 2)
+                    .putBoolean("update_auto", false).putBoolean("custom_theme_v1", true).apply()
             }
         }
         app.mg4dash.car.VehicleState.tempOffset = app.mg4dash.system.Prefs(this).tempOffset

@@ -378,7 +378,7 @@ object Dock {
      * Android Auto button: touch = open, long press = choose Android Auto, CarPlay or another app,
      * double touch = cut or restore the phone connection.
      */
-    private fun aaGestures(activity: Activity, cell: android.view.View, open: () -> Unit, rebuild: () -> Unit) {
+    fun aaGestures(activity: Activity, cell: android.view.View, open: () -> Unit, rebuild: () -> Unit) {
         val gd = android.view.GestureDetector(activity, object : android.view.GestureDetector.SimpleOnGestureListener() {
             override fun onSingleTapConfirmed(e: android.view.MotionEvent): Boolean { open(); return true }
             override fun onDoubleTap(e: android.view.MotionEvent): Boolean { toggleConnection(activity, rebuild); return true }

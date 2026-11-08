@@ -12,6 +12,15 @@ dock_climate|Climate|Clim|Klima|Clima|Clima|Klimaat|Klima
 dock_energy|Energy|Énergie|Energie|Energía|Energia|Energie|Enerji
 dock_aa|Android Auto|Android Auto|Android Auto|Android Auto|Android Auto|Android Auto|Android Auto
 dock_settings|Settings|Paramètres|Einstellungen|Ajustes|Impostazioni|Instellingen|Ayarlar
+dock_apps|Applications|Applications|Apps|Aplicaciones|Applicazioni|Apps|Uygulamalar
+map_recenter|Recenter map|Recentrer la carte|Karte zentrieren|Centrar mapa|Ricentra mappa|Kaart centreren|Haritayı ortala
+map_fullscreen|Full-screen map|Carte plein écran|Karte im Vollbild|Mapa a pantalla completa|Mappa a schermo intero|Kaart volledig scherm|Tam ekran harita
+cd_previous|Previous track|Piste précédente|Vorheriger Titel|Pista anterior|Brano precedente|Vorig nummer|Önceki parça
+cd_play_pause|Play or pause|Lecture ou pause|Wiedergabe oder Pause|Reproducir o pausar|Riproduci o pausa|Afspelen of pauzeren|Oynat veya duraklat
+close|Close|Fermer|Schließen|Cerrar|Chiudi|Sluiten|Kapat
+tesla_gear|Gear|Rapport|Gang|Marcha|Marcia|Versnelling|Vites
+tesla_gear_unknown|Gear unavailable|Rapport indisponible|Gang nicht verfügbar|Marcha no disponible|Marcia non disponibile|Versnelling niet beschikbaar|Vites kullanılamıyor
+tesla_car_decorative|Decorative MG4 image|Illustration décorative de la MG4|Dekorative MG4-Abbildung|Imagen decorativa del MG4|Immagine decorativa della MG4|Decoratieve MG4-afbeelding|Dekoratif MG4 görseli
 chip_auto|AUTO|AUTO|AUTO|AUTO|AUTO|AUTO|OTO
 chip_ac|A/C|A/C|A/C|A/C|A/C|A/C|A/C
 chip_recirc|RECIRC.|RECYCL.|UMLUFT|RECIRC.|RICIRC.|RECIRC.|İÇ HAVA
@@ -382,6 +391,7 @@ dock_cp|CarPlay|CarPlay|CarPlay|CarPlay|CarPlay|CarPlay|CarPlay
 dock_cp_stock|CarPlay (original)|CarPlay (d'origine)|CarPlay (original)|CarPlay (original)|CarPlay (originale)|CarPlay (origineel)|CarPlay (orijinal)
 dock_other_app|Another app…|Autre application…|Andere App…|Otra aplicación…|Altra app…|Andere app…|Başka bir uygulama…
 st_style_map|Map|Carte|Karte|Mapa|Mappa|Kaart|Harita
+st_style_tesla|Custom|Personnalisé|Individuell|Personalizado|Personalizzato|Aangepast|Özel
 st_stack_auto|Map layout stack goes back to the battery when plugged in: %1$s|Style Carte : la pile revient sur la batterie quand la voiture est branchée : %1$s|Stil Karte: Stapel zeigt beim Anstecken die Batterie: %1$s|Estilo Mapa: la pila vuelve a la batería al enchufar: %1$s|Stile Mappa: la pila torna alla batteria quando è collegata: %1$s|Stijl Kaart: stapel toont de batterij bij aansluiten: %1$s|Harita düzeninde yığın şarja takıldığında bataryaya döner: %1$s
 st_stack_desc|Map: weather and climate on the left, a stack (energy, trip energy, power, phone: swipe or tap) above the media in the centre, the map over the whole right column.|Carte : météo et clim à gauche, une pile (énergie, trajet, puissance, téléphone : balayez ou touchez) au-dessus de la musique au centre, la carte sur toute la colonne de droite.|Karte: Wetter und Klima links, ein Stapel (Energie, Fahrt, Leistung, Telefon: wischen oder tippen) über den Medien in der Mitte, die Karte über die ganze rechte Spalte.|Mapa: tiempo y clima a la izquierda, una pila (energía, trayecto, potencia, teléfono: deslice o toque) sobre la música en el centro, el mapa en toda la columna derecha.|Mappa: meteo e clima a sinistra, una pila (energia, viaggio, potenza, telefono: scorri o tocca) sopra la musica al centro, la mappa su tutta la colonna destra.|Kaart: weer en klimaat links, een stapel (energie, rit, vermogen, telefoon: veeg of tik) boven de media in het midden, de kaart over de hele rechterkolom.|Harita: solda hava durumu ve klima, ortada medyanın üstünde bir yığın (enerji, yolculuk enerjisi, güç, telefon: kaydırın veya dokunun), haritanın tamamı sağ sütunda.
 dock_slot_pick|Dock left slot|Case de gauche du dock|Linkes Dock-Feld|Casilla izquierda del dock|Casella sinistra del dock|Linkervak van het dock|Çubuğun sol yuvası

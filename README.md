@@ -1,5 +1,7 @@
 # MG4Dash
 
+> Fork visuel MG4 Custom Dashboard : [README en français](README.fr.md) · [guide d'installation et de retour arrière](docs/INSTALLATION_FR.md). Base officielle conservée ; thème noir et rouge et deux dispositions d'accueil.
+
 Full-screen launcher for the MG4 and its 1920 × 720 screen, for every head unit firmware (SWI69, SWI131/132/173, SWI68, SWI133, SWI165; see [Compatibility](#compatibility-beta)). It replaces the stock home screen with one dashboard (climate, battery, map, weather, media) and adds Climate, Energy, Vehicle, Sound and Phone pages, in dark, light or automatic mode following the car's lights.
 
 Languages: English (default), French, German, Spanish, Italian, Dutch and Turkish, following the car's system language. Units: km and kWh/100 km or miles and mi/kWh (following the car or set by hand), tyre pressure in bar, psi or kPa.

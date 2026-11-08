@@ -365,9 +365,9 @@ class Prefs(context: Context) {
         get() = sp.getBoolean("energy_log", false)   // off by default: a write every 5 s wears the storage
         set(v) = sp.edit().putBoolean("energy_log", v).apply()
 
-    /** Home style: 0 = full (3 columns), 1 = simple (3 panes + 2 shortcuts + weather). */
+    /** Home style: 0 = full, 1 = simple, 2 = map, 3 = Tesla-inspired. */
     var homeStyle: Int
-        get() = sp.getInt("home_style", 0)
+        get() = sp.getInt("home_style", 3)
         set(v) = sp.edit().putInt("home_style", v).apply()
 
     /** Theme: background (0 navy, 1 black, 2 charcoal, 3 dark green, 4 burgundy) and buttons (0 blue, 1 grey, 2 red, 3 green, 4 orange). */
@@ -384,10 +384,10 @@ class Prefs(context: Context) {
         set(v) = sp.edit().putBoolean("panel_fade", v).apply()
     /** Light / dark: 0 = auto (the car's day / night), 1 = dark, 2 = light. */
     var themeMode: Int
-        get() = sp.getInt("theme_mode", 0)
+        get() = sp.getInt("theme_mode", 1)
         set(v) = sp.edit().putInt("theme_mode", v).commit().let { }
     var themeAccent: Int
-        get() = sp.getInt("theme_accent", 0)
+        get() = sp.getInt("theme_accent", 2)
         set(v) = sp.edit().putInt("theme_accent", v).commit().let { }
 
     val raw: SharedPreferences get() = sp

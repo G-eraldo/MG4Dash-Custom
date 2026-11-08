@@ -30,7 +30,42 @@ class ScreenshotTest {
     /** Vertical bar on the left, as on a new install; one test puts it back at the bottom. */
     @org.junit.Before fun verticalBarByDefault() {
         org.robolectric.RuntimeEnvironment.getApplication().getSharedPreferences("mg4launcher", android.content.Context.MODE_PRIVATE)
-            .edit().putBoolean("vertical_dock", true).commit()
+            .edit().putBoolean("vertical_dock", true).putInt("home_style", 0).commit()
+        previewSpeed(0f)
+    }
+
+    private fun previewSpeed(kmh: Float) {
+        val field = app.mg4dash.car.CarBridge::class.java.getDeclaredField("_state").apply { isAccessible = true }
+        @Suppress("UNCHECKED_CAST")
+        val flow = field.get(app.mg4dash.car.CarBridge) as kotlinx.coroutines.flow.MutableStateFlow<app.mg4dash.car.VehicleState>
+        flow.value = flow.value.copy(connected = true, speedKmh = kmh, chargeStatus = 0)
+    }
+
+    @Test @Config(qualifiers = "fr-w1920dp-h720dp-land-mdpi") fun teslaParked() {
+        org.robolectric.RuntimeEnvironment.getApplication().getSharedPreferences("mg4launcher", android.content.Context.MODE_PRIVATE)
+            .edit().putBoolean("vertical_dock", false).putInt("home_style", 3).commit()
+        shoot(MainActivity::class.java, "tesla_parked.png")
+    }
+
+    @Test @Config(qualifiers = "fr-w1790dp-h640dp-land-mdpi") fun teslaParkedShort() {
+        org.robolectric.RuntimeEnvironment.getApplication().getSharedPreferences("mg4launcher", android.content.Context.MODE_PRIVATE)
+            .edit().putBoolean("vertical_dock", false).putInt("home_style", 3).putBoolean("fullscreen", false).commit()
+        shoot(MainActivity::class.java, "tesla_parked_short.png")
+    }
+
+    @Test @Config(qualifiers = "fr-w1920dp-h720dp-land-mdpi") fun teslaDriving() {
+        org.robolectric.RuntimeEnvironment.getApplication().getSharedPreferences("mg4launcher", android.content.Context.MODE_PRIVATE)
+            .edit().putBoolean("vertical_dock", false).putInt("home_style", 3).commit()
+        val activity = Robolectric.buildActivity(MainActivity::class.java).setup().get()
+        previewSpeed(90f)
+        app.mg4dash.map.NavRepo.setForTest(app.mg4dash.map.NavRepo.Nav(
+            distanceMeters = 2_400, timeSeconds = 180, road = "D934 · Amiens", eventType = app.mg4dash.map.NavRepo.Turn.STRAIGHT,
+            actionText = "Tout droit", side = null, exitNumber = null, angle = null,
+            totalMeters = 14_000, totalSeconds = 1_080, arrival = "",
+        ))
+        shadowOf(Looper.getMainLooper()).idleFor(2_500, TimeUnit.MILLISECONDS)
+        save(activity.window.decorView, "tesla_driving.png")
+        app.mg4dash.map.NavRepo.setForTest(null)
     }
 
     /** Connection icons with the phone's network shown: framed with its battery (#86). */
